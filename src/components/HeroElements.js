@@ -5,7 +5,7 @@ import { motion, useViewportScroll, useTransform } from 'framer-motion'
 
 const HeroElements = () => {
   const { scrollYProgress } = useViewportScroll()
-  const rotate = useTransform(scrollYProgress, [0, 0.5, 1], [0, 180, 360])
+  const rotate = useTransform(scrollYProgress, [0, 0.5, 1], [0, 360, 720])
 
   return (
     <div className="container hero-elements">

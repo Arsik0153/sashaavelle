@@ -3,14 +3,15 @@ import './assets/css/index.scss'
 import FixedBar from './components/FixedBar'
 import Hero from './components/Hero'
 import HeroElements from './components/HeroElements'
+import SmoothScroll from './components/SmoothScroll'
 
 const App = () => {
   return (
-    <div>
+    <SmoothScroll>
       <FixedBar />
       <Hero />
       <HeroElements />
-    </div>
+    </SmoothScroll>
   )
 }
 
