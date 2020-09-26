@@ -1,17 +1,11 @@
 import React from 'react'
-import './assets/css/index.scss'
-import FixedBar from './components/FixedBar'
-import Hero from './components/Hero'
-import HeroElements from './components/HeroElements'
-import SmoothScroll from './components/SmoothScroll'
+import Content from './components/Content'
 
 const App = () => {
   return (
-    <SmoothScroll>
-      <FixedBar />
-      <Hero />
-      <HeroElements />
-    </SmoothScroll>
+    <>
+      <Content />
+    </>
   )
 }
 

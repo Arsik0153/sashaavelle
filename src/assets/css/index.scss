@@ -20,6 +20,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  user-select: none;
 }
 
 a {
@@ -95,7 +96,7 @@ a {
       color: $accentColor;
       font-family: 'Orelo SemiWide';
       font-style: italic;
-      font-weight: 500;
+      font-weight: 600;
     }
   }
 }
@@ -109,10 +110,37 @@ a {
   svg {
     &:first-child {
       position: absolute;
+      transform: rotate(90deg);
     }
     &:last-child {
       margin-top: -5px;
       margin-left: 10px;
+    }
+  }
+  .play:hover {
+    fill: $accentColor;
+  }
+}
+
+.divider-text-container {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 100px;
+  h3 {
+    color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    font-size: 184px;
+    font-family: 'Orelo SemiWide DemiBold';
+    font-weight: 600;
+    font-style: italic;
+    white-space: nowrap;
+    &:last-child {
+      margin-top: -40px;
+    }
+
+    span {
+      -webkit-text-stroke-color: $accentColor;
     }
   }
 }
@@ -139,6 +167,15 @@ a {
   .hero-elements {
     p.additional-text {
       font-size: 16px;
+    }
+  }
+  .divider-text-container h3 {
+    font-size: 100px;
+    &:last-child {
+      margin-top: 0;
+    }
+    &:first-child {
+      padding-left: 7px;
     }
   }
 }
