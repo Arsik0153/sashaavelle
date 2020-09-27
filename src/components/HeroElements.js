@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { motion, useViewportScroll, useTransform } from 'framer-motion'
 
-const HeroElements = () => {
+const HeroElements = ({ setStep }) => {
   const { scrollYProgress } = useViewportScroll()
-  const rotate = useTransform(scrollYProgress, [0, 0.5, 1], [90, 360, 720])
+  const rotate = useTransform(scrollYProgress, [0, 0.5, 1], [90, 720, 1440])
   const transition = { duration: 1, ease: [0.6, 0.05, -0.01, 0.9] }
   let html = document.querySelector('html')
 
@@ -12,7 +12,7 @@ const HeroElements = () => {
     setTimeout(() => {
       html.classList.remove('no-scroll')
     }, 1500)
-  }, [])
+  })
 
   return (
     <div className="container hero-elements">
@@ -34,7 +34,13 @@ const HeroElements = () => {
         </p>
       </div>
 
-      <a href="#!" className="showreel-container">
+      <motion.div
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+        transition={{ ...transition }}
+        onClick={() => setStep('intro')}
+        className="showreel-container"
+      >
         <motion.svg
           style={{ rotate }}
           animate={{ rotate: 90 }}
@@ -54,7 +60,7 @@ const HeroElements = () => {
         <svg className="play" xmlns="http://www.w3.org/2000/svg" width="45" height="55" fill="none" viewBox="0 0 45 55">
           <path stroke="#DD1717" strokeWidth="2" d="M1.391 52.75V2.194l41.61 24.342L1.39 52.75z"></path>
         </svg>
-      </a>
+      </motion.div>
     </div>
   )
 }

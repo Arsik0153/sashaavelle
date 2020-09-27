@@ -8,7 +8,12 @@ const DividerText = () => {
 
   return (
     <div className="divider-text-container">
-      <motion.h3 style={{ x: x1 }}>
+      <motion.h3
+        animate={{ x: 100 }}
+        initial={{ x: 1500 }}
+        transition={{ duration: 1.5, ease: [0.6, 0.05, -0.01, 0.9] }}
+        style={{ x: x1 }}
+      >
         portrait <span>x</span> wedding
       </motion.h3>
       <motion.h3 style={{ x: x2 }}>
