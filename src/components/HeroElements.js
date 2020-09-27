@@ -1,21 +1,45 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { motion, useViewportScroll, useTransform } from 'framer-motion'
 
 const HeroElements = () => {
   const { scrollYProgress } = useViewportScroll()
   const rotate = useTransform(scrollYProgress, [0, 0.5, 1], [90, 360, 720])
+  const transition = { duration: 1, ease: [0.6, 0.05, -0.01, 0.9] }
+  let html = document.querySelector('html')
+
+  useEffect(() => {
+    html.classList.add('no-scroll')
+    setTimeout(() => {
+      html.classList.remove('no-scroll')
+    }, 1500)
+  }, [])
 
   return (
     <div className="container hero-elements">
-      <p className="additional-text">
-        Self-driven outdoor, <br />
-        travel & adventure photographer. <br />
-        Based in <span>New York </span>
-      </p>
+      <div className="additional-text">
+        <p>
+          <motion.span animate={{ y: 0 }} initial={{ y: 25 }} transition={{ ...transition, delay: 0.8 }}>
+            Self-driven outdoor, <br />
+          </motion.span>
+        </p>
+        <p>
+          <motion.span animate={{ y: 0 }} initial={{ y: 25 }} transition={{ ...transition, delay: 0.9 }}>
+            travel & adventure photographer. <br />
+          </motion.span>
+        </p>
+        <p>
+          <motion.span animate={{ y: 0 }} initial={{ y: 25 }} transition={{ ...transition, delay: 1 }}>
+            Based in <span className="red">New York </span>
+          </motion.span>
+        </p>
+      </div>
+
       <a href="#!" className="showreel-container">
         <motion.svg
           style={{ rotate }}
-          whileHover={{ rotate: rotate - 90 }}
+          animate={{ rotate: 90 }}
+          initial={{ rotate: 360 }}
+          transition={{ ...transition, duration: 1.5 }}
           xmlns="http://www.w3.org/2000/svg"
           width="174"
           height="182"
