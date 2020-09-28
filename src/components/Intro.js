@@ -1,10 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import introBg from './../assets/images/intro.mp4'
 import { motion } from 'framer-motion'
 
 const transition = { duration: 1, ease: [0.6, 0.05, -0.01, 0.9] }
+const introText = ['Sasha Avelle', '5 years experience', 'portrait', 'scenery', 'wedding', 'commercial']
 
 const Intro = ({ setStep }) => {
+  const [currentText, setCurrentText] = useState(0)
+
+  useEffect(() => {
+    let interval = setInterval(() => {
+      if (currentText > 4) {
+        window.clearInterval(interval)
+        setStep('main')
+      }
+      setCurrentText(currentText + 1)
+    }, 1000)
+
+    return () => {
+      window.clearInterval(interval)
+    }
+  })
+
   return (
     <motion.div exit={{ y: '-100%' }} transition={{ ...transition, delay: 1 }} className="intro-container">
       <motion.div
@@ -20,8 +37,8 @@ const Intro = ({ setStep }) => {
       </video>
       <div className="content">
         <h3 className="intro-text">
-          <motion.span exit={{ y: -40 }} transition={{ ...transition }}>
-            Sasha Avelle
+          <motion.span key={3} initial={{ y: 40 }} animate={{ y: 0 }} exit={{ y: -40 }} transition={{ ...transition }}>
+            {introText[currentText]}
           </motion.span>
         </h3>
         <div className="enter" onClick={() => setStep('main')}>
