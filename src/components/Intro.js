@@ -41,10 +41,16 @@ const Intro = ({ setStep }) => {
             {introText[currentText]}
           </motion.span>
         </h3>
-        <div className="enter" onClick={() => setStep('main')}>
+        <motion.div
+          animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          exit={{ opacity: 0 }}
+          className="enter"
+          onClick={() => setStep('main')}
+        >
           <p>Skip intro</p>
           <div className="line"></div>
-        </div>
+        </motion.div>
       </div>
     </motion.div>
   )

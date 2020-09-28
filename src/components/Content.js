@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './../assets/css/index.scss'
 import DividerText from './DividerText'
 import FixedBar from './FixedBar'
@@ -7,14 +7,23 @@ import HeroElements from './HeroElements'
 import Intro from './Intro'
 import SmoothScroll from './SmoothScroll'
 import { AnimatePresence, motion } from 'framer-motion'
+import Preloader from './Preloader'
 
-const transition = { duration: 1, ease: [0.6, 0.05, -0.01, 0.9] }
+const transition = { duration: 1.5, ease: [0.6, 0.05, -0.01, 0.9] }
 const Content = () => {
-  const [step, setStep] = useState('intro')
+  const [step, setStep] = useState('loading')
+
+  useEffect(() => {
+    setTimeout(() => {
+      setStep('intro')
+    }, 1500)
+  }, [])
 
   return (
     <AnimatePresence exitBeforeEnter>
-      {step === 'intro' ? (
+      {step === 'loading' ? (
+        <Preloader key={5} />
+      ) : step === 'intro' ? (
         <>
           <Intro setStep={setStep} key={1} />
           <motion.div
@@ -24,9 +33,9 @@ const Content = () => {
             className="intro-overlay"
           ></motion.div>
           <motion.div
-            key={3}
+            key={4}
             exit={{ y: '-100%' }}
-            transition={{ ...transition, delay: 1.5 }}
+            transition={{ ...transition, delay: 1.6 }}
             className="intro-overlay intro-overlay-2"
           ></motion.div>
         </>
