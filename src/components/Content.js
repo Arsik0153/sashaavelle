@@ -14,9 +14,7 @@ const Content = () => {
   const [step, setStep] = useState('loading')
 
   useEffect(() => {
-    setTimeout(() => {
-      setStep('intro')
-    }, 1500)
+    setStep('intro')
   }, [])
 
   return (

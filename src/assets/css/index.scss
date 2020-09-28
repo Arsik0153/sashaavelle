@@ -36,7 +36,9 @@ a {
   align-items: center;
   h5 {
     color: $textColor;
-    font-size: 16px;
+    font-size: 18px;
+    font-family: 'Nimbus Sans';
+    font-weight: 400;
   }
 }
 .fixedBar-container {
@@ -202,6 +204,7 @@ a {
     h3.intro-text {
       font-size: 26px;
       font-family: 'Nimbus Sans';
+      font-weight: 400;
       overflow: hidden;
       span {
         display: inline-block;
