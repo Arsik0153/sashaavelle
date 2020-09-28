@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import introBg from './../assets/images/intro.mp4'
 import { motion } from 'framer-motion'
 
@@ -7,8 +7,11 @@ const introText = ['Sasha Avelle', '5 years experience', 'portrait', 'scenery', 
 
 const Intro = ({ setStep }) => {
   const [currentText, setCurrentText] = useState(0)
+  const videoRef = useRef()
 
   useEffect(() => {
+    videoRef.current.play()
+
     let interval = setInterval(() => {
       if (currentText > 4) {
         window.clearInterval(interval)
@@ -31,7 +34,7 @@ const Intro = ({ setStep }) => {
         exit={{ opacity: 1 }}
         className="black-overlay"
       ></motion.div>
-      <video autoPlay={true} loop="loop" muted={true} className="bgVideo">
+      <video ref={videoRef} loop="loop" muted={true} className="bgVideo">
         <source src={introBg} type="video/mp4" />
         Your browser does not support video. Please update your browser.
       </video>
